@@ -1,0 +1,34 @@
+Add-Type -AssemblyName WindowsBase
+
+Add-Type -AssemblyName PresentationCore
+
+
+Write-Output "Welcome to mzxro's LanSchool Air and ZScaler Terminator V1! Opened at "(get-date).ToString('T');
+
+Write-Output "To abort at any time, press ESC."
+
+while($true){
+
+taskkill /im LSAirClient.exe /f
+
+taskkill /im LSAirClientUI.exe /f
+
+taskkill /im ZSATray.exe /f
+
+taskkill /im ZSAService.exe /f
+	
+taskkill /im ZSATunnel.exe /f
+
+  $isDown = [Windows.Input.Keyboard]::IsKeyDown([System.Windows.Input.Key]::Escape)
+
+  if ($isDown)
+
+  {
+
+    Write-Output "Blocker Deactivated. Reopen it to resume blocking"
+
+    break
+
+  }
+
+  }
